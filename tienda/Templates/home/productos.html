@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Productos {% endblock %}
+
+{% block content %}
+
+
+	<h1>Catalogo</h1>
+	{% if user.is_authenticated%}
+	<a href="{% url vista_agregar_producto%}">Agregar nuevo</a>
+	{% endif %}
+	<table border="1px">
+	{% if productos %}
+		{% for p in productos %}
+			<tr>
+				<td>{{p.nombre}}</td>
+				<td>{{p.nombre}}</td>
+				<td>{{p.nombre}}</td>
+				<td>vender</td>
+			</tr>
+		{% endfor %}
+	{% else %}
+		<h2>No hay productos</h2>
+	</table>
+	{% endif %} 
+{% endblock %}

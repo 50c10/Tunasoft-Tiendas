@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} Acceso {% endblock %}
+
+{% block content %}
+
+	<form acction="." method="POST">
+		{% csrf_token %}
+		{{ mensaje }}
+		{{ form.as_p }}
+		<input type="submit" value="Login">
+	</form>
+
+{% endblock %}
