@@ -10,6 +10,7 @@ from tienda.apps.subdomains.models import Subdomain
 class SubdomainForm(forms.ModelForm):
 
     class Meta:
+        usuario = forms.CharField(widget=forms.TextInput)
         model = Subdomain
         exclude = ('site', 'user',)
         
