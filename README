@@ -1,16 +1,14 @@
-
 ****************************************
-* Sistema de gestion de tiendas online *
+* Sistema de gestión de tiendas online *
 ****************************************
 
-Para poder probar la funcionalidad local es nesesario modificar el archivo host colocando las siguientes url
+Para poder probar la funcionalidad local, es nesesario modificar el archivo hosts, colocando las siguientes url:
 
 127.0.0.1   test.com
 127.0.0.1   sub1.test.com
 127.0.0.1   sub2.test.com
 
+test.com es el dominio base y, los demas, son subdominios.
 
-test.com es el dominio base y los demas son subdominios
+También es posible crear una tienda con un dominio propio, colocando el dominio en la parte de subdominio.
 
-
-tambien es posible crear una tienda con un dominio propio colocando el dominio en la parte de subdominio
