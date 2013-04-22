@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>{% block title %} Super Tienda {% endblock %}</title>
+</head>
+<body>
+	<header>
+		<h1>{{nombre}}</h1>
+		<img src="/media/images/tienda.jpg"/>
+	</header>
+	<section>
+		{% block content %}
+		{% endblock %}
+	</section>
+</body>
+</html>

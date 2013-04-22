@@ -8,6 +8,9 @@ from django.http import HttpResponseRedirect
 
 from tienda.apps.subdomains.forms import SubdomainForm
 
+def registro(request):
+    return render_to_response('subdomains/registro.html', RequestContext(request))
+
 def create_subdomain(request):
     if request.method == 'POST':
         subdomain_form = SubdomainForm(request.POST)

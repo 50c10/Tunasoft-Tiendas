@@ -1,6 +1,7 @@
 
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
 from django.conf import settings
 from django.http import HttpResponseRedirect
 
@@ -54,6 +55,7 @@ class RedirectOnInvalidSubdomain(object):
     def process_request(self, request):
         
         registration_path = reverse('registro')
+        
         if not request.subdomain_text:
             #No subdomain is set, can't do anything special.
             return
@@ -63,7 +65,8 @@ class RedirectOnInvalidSubdomain(object):
         
         if (not request.subdomain) and  (not registration_path in request.path) and (not settings.MEDIA_URL in request.path) and (not '/admin/' in request.path):
             "We do not know what this subdomain is about. ask for registering"
-            return HttpResponseRedirect(registration_path)
+            return redirect("http://test.com")   
+           # return HttpResponseRedirect(registration_path)
 
 
 # threadlocals middleware
