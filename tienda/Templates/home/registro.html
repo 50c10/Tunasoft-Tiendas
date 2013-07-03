@@ -1,19 +1,21 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>Tu tienda online</title>
-</head>
-<body>
-	<header>
-		<h1>Tu tienda online</h1>
-	</header>
-	<section>
-		Para comenzar a utilizar tu tienda tienes que registrarte
+{% extends 'sitio.html' %}
+{% block title %} Registro {% endblock %}
 
-		<form>
-			<label>Correo</label><input type="text"/>
-			<label>Contraseña</label><input type="text"/>
-		</form>
-	</section>
-</body>
-</html>
+{% block content %}
+	<div class="container-fluid" id="registro">
+		<div class="container">
+			<div class="row span6 center">
+				<p>Para comenzar a utilizar tu tienda tienes que registrarte</p>
+
+				<form>
+					<label>Correo</label><input type="text"/>
+					<label>Contraseña</label><input type="text"/>
+					<label>Nombre de tu Tienda</label><input type="text"/>
+					<label>Dominio</label><input type="text"/>
+					<label>Confirmar Contraseña</label><input type="text"/>
+					<input type="submit" value="Enviar"/>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

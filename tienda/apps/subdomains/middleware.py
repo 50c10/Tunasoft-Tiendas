@@ -54,7 +54,7 @@ class RedirectOnInvalidSubdomain(object):
     "This middleware *must be After* the GetSubdomainMiddleware, as it expects subdomain to be set up"
     def process_request(self, request):
         
-        registration_path = reverse('registro')
+        registration_path = reverse('vista_registro')
         
         if not request.subdomain_text:
             #No subdomain is set, can't do anything special.

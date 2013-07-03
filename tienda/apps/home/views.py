@@ -17,6 +17,9 @@ def index_view(request):
 	else:
 		return render_to_response('home/index.html',ctx, context_instance=RequestContext(request))
 
+def registro_view(request):
+	return render_to_response('home/registro.html',context_instance=RequestContext(request))
+
 def about_view(request):
 	mensaje = "Esto es un mensaje desde mi vista"
 	ctx = {'msg':mensaje}

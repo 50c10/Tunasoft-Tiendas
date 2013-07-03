@@ -30,3 +30,6 @@ def add_producto_view(request):
 			return render_to_response('ventas/addproducto.html',ctx, context_instance=RequestContext(request))
 	else:
 		return HttpResponseRedirect('/')
+
+def dashboard_view(request):
+	return render_to_response('ventas/dashboard.html', context_instance=RequestContext(request))
