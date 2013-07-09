@@ -73,7 +73,6 @@ MIDDLEWARE_CLASSES = (
     'tienda.apps.subdomains.middleware.GetSubdomainMiddleware',
     'tienda.apps.subdomains.middleware.ThreadLocals',
     'tienda.apps.subdomains.middleware.RedirectOnInvalidSubdomain',
-    #'tienda.apps.subdomain.middlware.SubdomainMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -111,7 +110,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'tienda.apps.ventas',
     'tienda.apps.home',
-    #'tienda.apps.subdomain',
     'tienda.apps.subdomains',
 )
 

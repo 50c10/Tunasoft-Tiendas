@@ -1,10 +1,13 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from tienda.apps.ventas.models import producto
+from tienda.apps.ventas.models import producto, tienda
+from tienda.apps.subdomains.models import Subdomain
 from tienda.apps.subdomains.middleware import get_current_subdomain
-from tienda.apps.home.forms import ContactoForm, LoginForm 
+from tienda.apps.home.forms import ContactoForm, LoginForm, RegistroForm
 from django.core.mail import EmailMultiAlternatives
+from django.contrib.auth.models import User
+from tienda.apps.home.models import userProfile
 
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
@@ -18,7 +21,27 @@ def index_view(request):
 		return render_to_response('home/index.html',ctx, context_instance=RequestContext(request))
 
 def registro_view(request):
-	return render_to_response('home/registro.html',context_instance=RequestContext(request))
+	info_enviado = False
+	Email 		= ""
+	password 	= ""
+	password2 	= ""
+	tienda 		= ""
+
+	if request.method == "POST":
+		form = RegistroForm(request.POST)
+		if form.is_valid():
+			info_enviado = True
+			Email = form.cleaned_data['Email']
+			password = form.cleaned_data['password']
+			tienda = form.cleaned_data['tienda']
+			password2 = form.cleaned_data['password2']
+			usuario = User.objects.create_user(tienda,Email,password)
+			usuarioProfile = userProfile()
+			Subdomain.objects.register_new_subdomain(subdomain_text = tienda, name=tienda, description = tienda, user = usuario)
+	else :
+		form = RegistroForm()
+	ctx = {'form':form,'info_enviado':info_enviado}
+	return render_to_response('home/registro.html',ctx,context_instance=RequestContext(request))
 
 def about_view(request):
 	mensaje = "Esto es un mensaje desde mi vista"
@@ -59,7 +82,7 @@ def contacto_view(request):
 def login_view(request):
 	mensaje = ""
 	if request.user.is_authenticated():
-		return HttpResponseRedirect('/')
+		return HttpResponseRedirect('/dashboard/')
 	else:
 		if request.method == "POST":
 			form = LoginForm(request.POST)
@@ -69,7 +92,7 @@ def login_view(request):
 				usuario = authenticate(username=username,password=password)
 				if usuario is not None and usuario.is_active:
 					login(request, usuario)
-					return HttpResponseRedirect('/')
+					return HttpResponseRedirect('/dashboard/')
 				else:
 					mensaje = "usuario o password incorrecto"
 		form = LoginForm()

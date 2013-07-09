@@ -1,25 +1,40 @@
-{% extends 'base.html' %}
+{% extends 'sitio.html' %}
 {% block title %} Productos {% endblock %}
 
 {% block content %}
 
 
-	<h1>Catalogo</h1>
-	{% if user.is_authenticated%}
-	<a href="{% url vista_agregar_producto%}">Agregar nuevo</a>
-	{% endif %}
-	<table border="1px">
-	{% if productos %}
-		{% for p in productos %}
-			<tr>
-				<td>{{p.nombre}}</td>
-				<td>{{p.nombre}}</td>
-				<td>{{p.nombre}}</td>
-				<td>vender</td>
-			</tr>
-		{% endfor %}
-	{% else %}
-		<h2>No hay productos</h2>
-	</table>
-	{% endif %} 
+	<div class="container">
+		<div class="container-fluid">
+			<h1>Catalogo</h1>
+			<div class="row-fluid">
+				<div class="span2">
+					<p>Categorias</p>
+					<ul class="nav nav-pills">
+						<li>Cosas</li>
+						<li>Cosas2</li>
+						<li>Cosas3</li>
+						<li>Cosas4</li>
+						<li>Cosas5</li>
+					</ul>
+				</div>
+				<div class="span10">
+					<table class="table table-striped" >
+					{% if productos %}
+						{% for p in productos %}
+							<tr>
+								<td>{{p.nombre}}</td>
+								<td>{{p.nombre}}</td>
+								<td>{{p.nombre}}</td>
+								<td><a class="btn" href="#">Comprar</a></td>
+							</tr>
+						{% endfor %}
+					{% else %}
+						<h2>No hay productos</h2>
+					</table>
+					{% endif %} 
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

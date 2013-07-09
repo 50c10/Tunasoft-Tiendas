@@ -2,20 +2,51 @@
 {% block title %} Registro {% endblock %}
 
 {% block content %}
-	<div class="container-fluid" id="registro">
-		<div class="container">
-			<div class="row span6 center">
-				<p>Para comenzar a utilizar tu tienda tienes que registrarte</p>
+{% if info_enviado %}
+	<p>Gracias por enviar el coment luego nos leemos Yeaa.</p>
 
-				<form>
-					<label>Correo</label><input type="text"/>
-					<label>Contraseña</label><input type="text"/>
-					<label>Nombre de tu Tienda</label><input type="text"/>
-					<label>Dominio</label><input type="text"/>
-					<label>Confirmar Contraseña</label><input type="text"/>
-					<input type="submit" value="Enviar"/>
-				</form>
+{% else %}
+	{{ form.non_field_errors }}
+	<p>Llena los siguientes datos para comensar tu cuenta de prueba</p>
+<div class="container">
+	<form class="form-horizontal" action="/registro/" method="post">
+		{% csrf_token %}
+		<div class="control-group" >
+			<div class="controls">
+				<input type="text" placeholder="Correo" name="Email" />
+				<span class="help-inline">{{ form.Email.errors.as_text }}</span>
 			</div>
 		</div>
-	</div>
+		<div class="control-group">
+			<div class="controls">
+				<input type="text" placeholder="Contraseña" name="password" />
+				<span class="help-inline">{{ form.password.errors.as_text }}</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<input type="text" placeholder="Confirmar Contraseña" name="password2"/>
+				<span class="help-inline">{{ form.password2.errors.as_text }}</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<input type="text" placeholder="Nombre de tu Tienda" name="tienda" />
+				<span class="help-inline">{{ form.tienda.errors.as_text }}</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<input type="text" placeholder="Dominio" />
+				<span class="help-inline">{{ form.dominio.errors.as_text }}</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<input type="submit" class="btn btn-primary" value="Registrar"/>
+			</div>
+		</div>
+	</form>
+</div>
+{% endif %}
 {% endblock %}

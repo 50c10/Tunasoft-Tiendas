@@ -1,13 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'sitio.html' %}
 {% block title %} Acceso {% endblock %}
 
 {% block content %}
 
-	<form acction="." method="POST">
-		{% csrf_token %}
-		{{ mensaje }}
-		{{ form.as_p }}
-		<input type="submit" value="Login">
-	</form>
-
+<div class="content">
+	<div class="content-fluid">
+		<div class="row span4 center">
+			<form acction="." method="POST">
+				{% csrf_token %}
+				{{ mensaje }}
+				{{ form.as_p }}
+				<input type="submit" value="Login">
+			</form>
+		</div>
+	</div>
+</div>
 {% endblock %}

@@ -12,4 +12,6 @@ urlpatterns = patterns('tienda.apps.home.views',
 
 #urls para el registro de tiendas
 	url(r'^registro/$','registro_view',name='vista_registro'),
+
+
 )
