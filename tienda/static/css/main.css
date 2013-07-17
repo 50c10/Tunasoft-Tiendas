@@ -1,0 +1,68 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.navbar-fixed-top {
+	border-top: 3px solid black;
+}
+
+.navbar-inner {
+	background:rgba(13,13,13,0.7);
+	
+}
+
+.navbar-inner a {
+	color:rgb(175, 175, 175) !important;
+	text-shadow:0 1px 0 rgb(2, 1, 1) !important;
+}
+
+.center {
+	float: none;
+	margin: 0 auto;
+}
+
+#intro {
+	margin-top: 100px;
+	text-align: center;
+	min-height: 450px;
+	padding: 0 0 50px;
+}
+
+#about {
+	min-height: 200px;
+	padding: 0 0 50px;
+}
+
+#registro form {
+	border-radius:3px; 
+	-moz-border-radius:3px; /* Firefox */ 
+	-webkit-border-radius:3px; /* Safari y Chrome */ 
+
+	/* Otros estilos */ 
+	border:1px solid #333;
+	background:#eee;
+	width:100%;
+	padding:5px;
+}
+
+#barra
+{
+	background-color: #848484;
+}
+
+#itemproyecto
+{
+	border: 1px solid #e3e3e3;
+	border-radius: 15px;
+	margin: 5px;
+	background-color: #f5f5f5;
+}
+
+
+
+
+
+
+

@@ -1,17 +1,132 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>Tiendas Tunasoft</title>
-</head>
-<body>
-	<header>
-		<h1>Tiendas TunaSoft </h1>
-		<img src="/media/images/tienda.jpg"/>
-	</header>
-	<section>
-		<h2>Servicoo de prueba por <b>30 minutos</b></h2>
-		<h2>Para comenzar a utilizar nuestro servicio de prueba gratuito tienes que registrarte</h2>
-		<a href="{% url registro%}">Registro</a>
-	</section>
-</body>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Tiendas Tunasoft</title>
+		<meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="/static/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+
+        <script src="/static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+	<body>
+		<!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    	<div class="navbar navbar-fixed-top">
+    		<div class="navbar-inner">
+    			<div class="container">
+    				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+			        </a>
+    				<a href="/" class="scroller brand" data-section="#about">Tutienda</a>
+
+    				<div class="nav-collapse collapse">
+				        <ul class="nav pull-right">
+						  <li class="dropdown">
+						    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						      Ingresa
+						      <b class="caret"></b>
+						    </a>
+						    <ul class="dropdown-menu">
+						    	<p>Ingresa a tu cuenta en TuTienda.com</p>
+						        <form class="navbar-form pull-right" action="/login/" method="post" accept-charset="utf-8">
+		                            {% csrf_token %}
+		                            <input class="span2" type="text" placeholder="Usuario" id="id_username" name="username">
+		                            <input class="span2" type="password" placeholder="Password" id="id_password" name="password">
+		                        	<button type="submit" class="btn">LogIn</button>
+		                        </form>
+		                        <a href="#">¿Olvidaste tu contraseña?</a>
+						    </ul>
+						  </li>
+						</ul>
+				        <!-- .nav, .navbar-search, .navbar-form, etc -->
+				    </div>
+    			</div>
+    		</div>
+    	</div>
+
+
+
+		<div class="main-container">
+			<div class="container-fluid" id="intro">
+				<div class="container">
+					<div class="row span6 center">
+						<h1>Servicoo de prueba por <b>30 minutos</b></h1>
+						<p>Para comenzar a utilizar nuestro servicio de prueba gratuito tienes que registrarte</p>
+						<a href="/registro" role="button" class="btn btn-large btn-success">Registro</a>
+					</div>
+				</div>
+			</div>
+			<!-- termina intro-->
+			<!-- Comienza about-->
+			<div class="container-fuild" id="about">
+				<div class="container">
+					<ul class="thumbnails">
+						<li class="span4">
+							<div class="thumbnail">
+							<h2>Aqui va todo el about</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur varius purus quis pulvinar auctor. In hac habitasse platea dictumst. Mauris blandit eget magna consectetur varius. Nulla et luctus velit, sed accumsan diam. In sit amet congue metus.</p>
+							</div>
+						</li>
+						<li class="span4">
+							<div class="thumbnail">
+							<h2>Aqui va todo el about</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur varius purus quis pulvinar auctor. In hac habitasse platea dictumst. Mauris blandit eget magna consectetur varius. Nulla et luctus velit, sed accumsan diam. In sit amet congue metus.</p>
+							</div>
+						</li>
+						<li class="span4">
+							<div class="thumbnail">
+							<h2>Aqui va todo el about</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur varius purus quis pulvinar auctor. In hac habitasse platea dictumst. Mauris blandit eget magna consectetur varius. Nulla et luctus velit, sed accumsan diam. In sit amet congue metus.</p>
+							</div>
+						</li>
+					
+
+					</ul>
+				</div>
+			</div>
+			<!-- termina about-->
+			<!-- Comienza contacto-->
+			<div class="container-fuild" id="contacto">
+				<div class="container">
+					<div class="row span6 center">
+					<h2>Aqui va todo el contacto</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur varius purus quis pulvinar auctor. In hac habitasse platea dictumst. Mauris blandit eget magna consectetur varius. Nulla et luctus velit, sed accumsan diam. In sit amet congue metus. Donec fermentum dapibus urna nec pulvinar. Aliquam hendrerit, tellus a suscipit mollis, nibh dolor consequat augue, sed cursus lorem massa non nulla. Vivamus viverra, est eu lacinia elementum, purus sapien consectetur sapien, eget mollis ante orci a nulla. Praesent massa nisl, lobortis quis tincidunt et, vestibulum in mauris. Mauris venenatis gravida augue non pharetra. In hac habitasse platea dictumst. Pellentesque dictum diam eu lectus aliquet blandit.</p>
+					</div>
+				</div>
+			</div>
+			<!-- termina contacto-->
+		</div>
+
+		<!--  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+        <script>window.jQuery || document.write('<script src="/static/js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+
+        <script src="/static/js/vendor/bootstrap.min.js"></script>
+
+        <script src="/static/js/main.js"></script>
+<!-- asdasd
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+-->
+	</body>
 </html>
