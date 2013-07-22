@@ -11,6 +11,7 @@ from tienda.apps.home.models import userProfile
 
 from django.contrib.auth import login,logout,authenticate
 from django.http import HttpResponseRedirect
+from django import forms
 
 def index_view(request):
 	mensaje = get_current_subdomain()
@@ -21,26 +22,36 @@ def index_view(request):
 		return render_to_response('home/index.html',ctx, context_instance=RequestContext(request))
 
 def registro_view(request):
-	info_enviado = False
-	Email 		= ""
-	password 	= ""
-	password2 	= ""
-	tienda 		= ""
+	reguistro_correcto	= False
+	usuario 			= ""
+	Email 				= ""
+	password 			= ""
+	password2 			= ""
+	nombre_tienda 		= ""
 
 	if request.method == "POST":
 		form = RegistroForm(request.POST)
 		if form.is_valid():
-			info_enviado = True
+			reguistro_correcto = True
+			usuario = form.cleaned_data['usuario']
 			Email = form.cleaned_data['Email']
 			password = form.cleaned_data['password']
-			tienda = form.cleaned_data['tienda']
+			nombre_tienda = form.cleaned_data['tienda']
 			password2 = form.cleaned_data['password2']
-			usuario = User.objects.create_user(tienda,Email,password)
+
+			usuario = User.objects.create_user(usuario,Email,password)
 			usuarioProfile = userProfile()
-			Subdomain.objects.register_new_subdomain(subdomain_text = tienda, name=tienda, description = tienda, user = usuario)
+			
+			tiendao = tienda()
+			tiendao.nombre = nombre_tienda
+			tiendao.subdomain = Subdomain.objects.register_new_subdomain(subdomain_text = nombre_tienda, name=nombre_tienda, description = nombre_tienda, user = usuario)
+			tiendao.save()
+			usuarioProfile.tienda = tiendao
+			usuarioProfile.user = usuario
+			usuarioProfile.save()
 	else :
 		form = RegistroForm()
-	ctx = {'form':form,'info_enviado':info_enviado}
+	ctx = {'form':form,'reguistro_correcto':reguistro_correcto}
 	return render_to_response('home/registro.html',ctx,context_instance=RequestContext(request))
 
 def about_view(request):

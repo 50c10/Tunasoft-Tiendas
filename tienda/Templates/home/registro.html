@@ -2,7 +2,7 @@
 {% block title %} Registro {% endblock %}
 
 {% block content %}
-{% if info_enviado %}
+{% if reguistro_correcto %}
 	<p>Gracias por enviar el coment luego nos leemos Yeaa.</p>
 
 {% else %}
@@ -13,8 +13,8 @@
 		{% csrf_token %}
 		<div class="control-group" >
 			<div class="controls">
-				<input type="text" placeholder="Correo" name="Email" />
-				<span class="help-inline">{{ form.Email.errors.as_text }}</span>
+				<input type="text" placeholder="Usuario" name="usuario" />
+				<span class="help-inline">{{ form.usuario.errors.as_text }}</span>
 			</div>
 		</div>
 		<div class="control-group">
@@ -27,6 +27,12 @@
 			<div class="controls">
 				<input type="text" placeholder="Confirmar Contraseña" name="password2"/>
 				<span class="help-inline">{{ form.password2.errors.as_text }}</span>
+			</div>
+		</div>
+		<div class="control-group" >
+			<div class="controls">
+				<input type="text" placeholder="Correo" name="Email" />
+				<span class="help-inline">{{ form.Email.errors.as_text }}</span>
 			</div>
 		</div>
 		<div class="control-group">

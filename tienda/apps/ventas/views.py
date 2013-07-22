@@ -32,4 +32,7 @@ def add_producto_view(request):
 		return HttpResponseRedirect('/')
 
 def dashboard_view(request):
-	return render_to_response('ventas/dashboard.html', context_instance=RequestContext(request))
+	tienda = request.user.get_profile().tienda
+	nombre_tienda = tienda.nombre
+	ctx = {'nombre_tienda':nombre_tienda}
+	return render_to_response('ventas/dashboard.html',ctx, context_instance=RequestContext(request))

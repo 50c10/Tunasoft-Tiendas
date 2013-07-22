@@ -6,6 +6,9 @@ class tienda(models.Model):
 	subdomain = models.ForeignKey(Subdomain)
 	nombre = models.CharField(max_length=200)
 	direccion = models.CharField(max_length=200)
+	
+	def __unicode__(self):
+		return self.nombre
 
 class cliente(models.Model):
 	nombre = models.CharField(max_length=200)
