@@ -14,11 +14,14 @@ from django.http import HttpResponseRedirect
 from django import forms
 
 def index_view(request):
-	mensaje = get_current_subdomain()
-	ctx = {'nombre':mensaje}
-	if mensaje == None:
-		return render_to_response('bienvenida.html',ctx, context_instance=RequestContext(request))
+	subdomain = get_current_subdomain()	
+	if subdomain == None:
+		return render_to_response('bienvenida.html', context_instance=RequestContext(request))
 	else:
+		tienda_actual = tienda.objects.get(subdomain=subdomain)
+		nombre_tienda = tienda_actual.nombre
+		prod = producto.objects.filter(status=True).filter(tienda=tienda_actual)
+		ctx = {'productos':prod, 'nombre_tienda':nombre_tienda}
 		return render_to_response('home/index.html',ctx, context_instance=RequestContext(request))
 
 def registro_view(request):

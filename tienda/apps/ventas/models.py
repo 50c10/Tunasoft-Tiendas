@@ -1,5 +1,5 @@
 from django.db import models
-from tienda.apps.subdomains.models import Subdomain	
+from tienda.apps.subdomains.models import Subdomain
 
 # Create your models here.
 class tienda(models.Model):
@@ -24,6 +24,7 @@ class producto(models.Model):
 	nombre = models.CharField(max_length=100)
 	descripcion = models.TextField(max_length=300)
 	status = models.BooleanField(default=True)
+	tienda = models.ForeignKey(tienda)
 
 	def __unicode__(self):
 		return self.nombre
