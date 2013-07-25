@@ -2,10 +2,20 @@ from django.db import models
 from tienda.apps.subdomains.models import Subdomain
 
 # Create your models here.
+
+class propiedades(models.Model):
+	color_fondo = models.CharField(max_length=10)
+	logo 		= models.CharField(max_length=10)
+	layout		= models.CharField(max_length=10)
+
+	def __unicode__(self):
+		return self.layout
+
 class tienda(models.Model):
 	subdomain = models.ForeignKey(Subdomain)
 	nombre = models.CharField(max_length=200)
 	direccion = models.CharField(max_length=200)
+	propiedades = models.ForeignKey(propiedades)
 	
 	def __unicode__(self):
 		return self.nombre
@@ -28,3 +38,5 @@ class producto(models.Model):
 
 	def __unicode__(self):
 		return self.nombre
+
+

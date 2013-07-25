@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from tienda.apps.ventas.models import producto, tienda
+from tienda.apps.ventas.models import producto, tienda, propiedades
 from tienda.apps.subdomains.models import Subdomain
 from tienda.apps.subdomains.middleware import get_current_subdomain
 from tienda.apps.home.forms import ContactoForm, LoginForm, RegistroForm
@@ -21,7 +21,8 @@ def index_view(request):
 		tienda_actual = tienda.objects.get(subdomain=subdomain)
 		nombre_tienda = tienda_actual.nombre
 		prod = producto.objects.filter(status=True).filter(tienda=tienda_actual)
-		ctx = {'productos':prod, 'nombre_tienda':nombre_tienda}
+		color_fondo = tienda_actual.propiedades.color_fondo
+		ctx = {'productos':prod, 'nombre_tienda':nombre_tienda , 'color_fondo':color_fondo}
 		return render_to_response('home/index.html',ctx, context_instance=RequestContext(request))
 
 def registro_view(request):
@@ -44,9 +45,16 @@ def registro_view(request):
 
 			usuario = User.objects.create_user(usuario,Email,password)
 			usuarioProfile = userProfile()
-			
+
+			pTienda = propiedades()
+			pTienda.color_fondo = '#888'
+			pTienda.logo = nombre_tienda
+			pTienda.layout = nombre_tienda
+			pTienda.save()
+
 			tiendao = tienda()
 			tiendao.nombre = nombre_tienda
+			tiendao.propiedades = pTienda
 			tiendao.subdomain = Subdomain.objects.register_new_subdomain(subdomain_text = nombre_tienda, name=nombre_tienda, description = nombre_tienda, user = usuario)
 			tiendao.save()
 			usuarioProfile.tienda = tiendao
