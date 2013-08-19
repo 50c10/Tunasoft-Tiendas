@@ -1,0 +1,30 @@
+{% extends 'ventas/dashboard.html' %}
+{% block title %} Categorias {% endblock %}
+
+{% block content %}
+
+
+	<div class="container">
+		<div class="container-fluid">
+			<h1>Categorias</h1>
+			<div class="row-fluid">
+				<div class="span10">
+					<table class="table table-striped" >
+					{% if categorias %}
+						{% for c in categorias %}
+							<tr>
+								<td>{{p.nombre}}</td>
+								<td>{{p.nombre}}</td>
+								<td>{{p.nombre}}</td>
+								<td><a class="btn" href="#">Editar</a></td>
+							</tr>
+						{% endfor %}
+					{% else %}
+						<h2>No hay Categorias</h2>
+					</table>
+					{% endif %} 
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

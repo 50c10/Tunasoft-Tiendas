@@ -1,0 +1,16 @@
+{% extends 'ventas/dashboard.html' %}
+{% block title %} Agregar Categoria {% endblock %}
+
+{% block content %}
+	<h1>Agregar Categoria</h1>
+
+<p>{{ informacion }}</p>
+
+	<form action="." method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="guardar"/>
+		<input type="reset" value="Limpiar"/>	
+	</form>
+
+{% endblock %}

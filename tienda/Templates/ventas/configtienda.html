@@ -1,0 +1,39 @@
+{% extends 'ventas/dashboard.html' %}
+{% block title %} Configuracion {% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#basico">Basico</a></li>
+  <li><a data-toggle="tab" href="#dominios">Dominios</a></li>
+  <li><a data-toggle="tab" href="#otros">Otros</a></li>
+</ul>
+<div class="tab-content">
+	<div id="basico" class="tab-pane active">
+		<label>NOMBRE</label>
+
+		<label>SLOGAN DESCRIPCIÓN CORTA DE TU TIENDA</label>
+
+		<label>DIRECCIÓN DE CONTACTO</label>
+
+		<label>TELÉFONO DE CONTACTO</label>
+
+		<label>DIRECCIÓN SITIO WEB</label>
+
+		<label>CORREO ELECTRÓNICO DE CONTACTO</label>
+
+		<label>DIRECCIÓN PÁGINA EN FACEBOOK</label>
+
+		<label>USUARIO DE TWITTER</label>
+	</div>
+	<div id="dominios" class="tab-pane">
+		<label>NOMBRE Dominio</label>
+
+	</div>
+		<div id="otros" class="tab-pane">
+		<label>otros</label>
+	</div>
+</div>
+<button type="button" class="btn btn-success">Guardar</button>
+
+{% endblock %}
