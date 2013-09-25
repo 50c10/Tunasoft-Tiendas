@@ -4,11 +4,23 @@
 {% block content %}
 	<h1>Agregar Categoria</h1>
 
-<p>{{ informacion }}</p>
+{% if alert == "suc" %}
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Bien!</strong> {{ informacion }}
+</div>
+{% endif %}
+
+{% if alert == "war" %}
+<div class="alert alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Algo Anda mal!</strong> {{ informacion }}
+</div>
+{% endif %}
 
 	<form action="." method="POST">
 		{% csrf_token %}
-		{{ form.as_p }}
+		{{ form }}
 		<input type="submit" value="guardar"/>
 		<input type="reset" value="Limpiar"/>	
 	</form>

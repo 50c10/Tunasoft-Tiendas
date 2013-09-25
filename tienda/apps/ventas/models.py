@@ -30,13 +30,24 @@ class cliente(models.Model):
 		return nombreCompleto
 
 
+class categoria(models.Model):
+	nombre = models.CharField(max_length=50)
+	descripcion =models.CharField(max_length=200)
+	tienda = models.ForeignKey(tienda)
+
+	def __unicode__(self):
+		return self.nombre
+
 class producto(models.Model):
 	nombre = models.CharField(max_length=100)
 	descripcion = models.TextField(max_length=300)
 	status = models.BooleanField(default=True)
 	tienda = models.ForeignKey(tienda)
+	categoria = models.ManyToManyField(categoria,null=True,blank=True)
 
 	def __unicode__(self):
 		return self.nombre
+
+
 
 
