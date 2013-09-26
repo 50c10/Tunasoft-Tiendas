@@ -56,8 +56,7 @@ def add_categoria_view(request):
 			return render_to_response('ventas/addcategoria.html',ctx, context_instance=RequestContext(request))
 		else:
 			form = addCategoriaForm()
-			alert = "war"
-			ctx = {'form':form, 'alert':alert}
+			ctx = {'form':form}
 			return render_to_response('ventas/addcategoria.html',ctx, context_instance=RequestContext(request))
 	else:
 		return HttpResponseRedirect('/')
@@ -81,9 +80,6 @@ def categorias_view(request):
 	categorias = categoria.objects.filter(tienda=tienda_actual)
 	return render(request,'ventas/categorias.html',{'categorias':categorias})
 
-def add_categoria_view(request):
-	return render_to_response('ventas/addcategoria.html', context_instance=RequestContext(request))
-
 def configuracion_tienda_view(request):
 	return render(request,'ventas/configtienda.html')
 
@@ -92,3 +88,7 @@ def herramienta_view(request):
 
 def confEnvios_view(request):
 	return render(request,'ventas/conf-envios.html')
+
+def producto_view(request,id_producto):
+	prod = producto.objects.get(id=id_producto)
+	return render(request,'ventas/producto.html',{'producto':prod})

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %} {{producto.nombre}} {% endblock %}
+
+{% block head %}
+  <STYLE type="text/css">
+  body
+  {
+    background-color: {{ color_fondo }};
+  }
+ </STYLE>
+{% endblock %}
+{% block content %}
+
+ <div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list">
+          <li class="nav-header">Categorias</li>
+          <li class="active"><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li class="nav-header">Cat 1</li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li class="nav-header">Cat 2</li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+        </ul>
+      </div><!--/.well -->
+    </div><!--/span--> 
+    <div class="span10">
+      
+      <div>
+        <a href="#">Regresar</a>
+        <h2>{{producto.nombre}}</h2>
+        <div>
+          <img src="#">
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+{% endblock %}

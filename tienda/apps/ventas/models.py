@@ -40,6 +40,8 @@ class categoria(models.Model):
 
 class producto(models.Model):
 	nombre = models.CharField(max_length=100)
+	precio = models.DecimalField(max_digits=7,decimal_places=2)
+	stock = models.IntegerField(default = 0)
 	descripcion = models.TextField(max_length=300)
 	status = models.BooleanField(default=True)
 	tienda = models.ForeignKey(tienda)
