@@ -1,5 +1,5 @@
 
-from django.conf.urls.defaults import *
+from django.conf.urls import *
 
 urlpatterns = patterns('tienda.apps.subdomains.views',
     url(r'^subdomain/$', 'create_subdomain', name='subdomain'),
