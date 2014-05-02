@@ -120,3 +120,12 @@ def login_view(request):
 def logout_view(request):
 	logout(request)
 	return HttpResponseRedirect('/')
+
+def planes_view(request):
+	return render_to_response('home/planes.html',context_instance=RequestContext(request))
+
+def beneficios_view(request):
+	return render_to_response('home/beneficios.html',context_instance=RequestContext(request))
+
+def ayuda_view(request):
+	return render_to_response('home/ayuda.html',context_instance=RequestContext(request))
