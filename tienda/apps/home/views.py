@@ -63,7 +63,10 @@ def registro_view(request):
 	else :
 		form = RegistroForm()
 	ctx = {'form':form,'reguistro_correcto':reguistro_correcto}
-	return render_to_response('home/registro.html',ctx,context_instance=RequestContext(request))
+	if reguistro_correcto :
+		return HttpResponseRedirect('/dashboard/')
+	else :
+		return render_to_response('home/registro.html',ctx,context_instance=RequestContext(request))
 
 def about_view(request):
 	mensaje = "Esto es un mensaje desde mi vista"

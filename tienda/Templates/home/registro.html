@@ -2,133 +2,79 @@
 {% block title %} Registro {% endblock %}
 
 {% block content %}
-{% if reguistro_correcto %}
-	<p>Gracias por enviar el coment luego nos leemos Yeaa.</p>
 
-{% else %}
-	{{ form.non_field_errors }}
-	<p>Llena los siguientes datos para comensar tu cuenta de prueba</p>
-<div class="container">
-	<form class="form-horizontal" action="/registro/" method="post">
-		{% csrf_token %}
-		<div class="control-group" >
-			<div class="controls">
-				<input type="text" placeholder="Usuario" name="usuario" />
-				<span class="help-inline">{{ form.usuario.errors.as_text }}</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<input type="text" placeholder="Contraseña" name="password" />
-				<span class="help-inline">{{ form.password.errors.as_text }}</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<input type="text" placeholder="Confirmar Contraseña" name="password2"/>
-				<span class="help-inline">{{ form.password2.errors.as_text }}</span>
-			</div>
-		</div>
-		<div class="control-group" >
-			<div class="controls">
-				<input type="text" placeholder="Correo" name="Email" />
-				<span class="help-inline">{{ form.Email.errors.as_text }}</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<input type="text" placeholder="Nombre de tu Tienda" name="tienda" />
-				<span class="help-inline">{{ form.tienda.errors.as_text }}</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<input type="text" placeholder="Dominio" />
-				<span class="help-inline">{{ form.dominio.errors.as_text }}</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<input type="submit" class="btn btn-primary" value="Registrar"/>
-			</div>
-		</div>
-	</form>
-</div>
-{% endif %}
 
-<div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <div class="panel-title">Registro</div>
-                            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/login">Ingresa</a></div>
-                        </div>  
-                        <div class="panel-body" >
-                            <form id="signupform" class="form-horizontal" role="form">
-                                
-                                <div id="signupalert" style="display:none" class="alert alert-danger">
-                                    <p>{{ form.non_field_errors }}</p>
-                                    <span></span>
-                                </div>
-                                    
-                                
-                                  
-                                <div class="form-group">
-                                    <label for="email" class="col-md-3 control-label">Email</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="email" placeholder="Email Address">
-                                    </div>
-                                </div>
-                                    
-                                <div class="form-group">
-                                    <label for="firstname" class="col-md-3 control-label">First Name</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="firstname" placeholder="First Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastname" class="col-md-3 control-label">Last Name</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="lastname" placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-md-3 control-label">Password</label>
-                                    <div class="col-md-9">
-                                        <input type="password" class="form-control" name="passwd" placeholder="Password">
-                                    </div>
-                                </div>
-                                    
-                                <div class="form-group">
-                                    <label for="icode" class="col-md-3 control-label">Invitation Code</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="icode" placeholder="">
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <!-- Button -->                                        
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
-                                        <span style="margin-left:8px;">or</span>  
-                                    </div>
-                                </div>
-                                
-                                <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
-                                    
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-fbsignup" type="button" class="btn btn-primary" disabled><i class="icon-facebook"></i>   Sign Up with Facebook</button>
-                                    </div>                                           
-                                        
-                                </div>
-                                
-                                
-                                
-                            </form>
-                         </div>
+    
+    <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Registro</div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/login">Ingresa</a></div>
+            </div>  
+            <div class="panel-body" >
+                <form class="form-horizontal" action="/registro/" method="post">
+                    {% csrf_token %}
+                    <div id="signupalert" style="" class="alert alert-danger">
+                        <p>{{ form.non_field_errors }}</p>
+                        <span></span>
                     </div>
+                        
+                    
+                      
+                    <div class="form-group">
+                        <label for="usuario" class="col-md-3 control-label">Usuario</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="usuario" placeholder="Usuario">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-3 control-label">Contraseña</label>
+                        <div class="col-md-9">
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password2" class="col-md-3 control-label">Confirmar Contraseña</label>
+                        <div class="col-md-9">
+                            <input type="password" class="form-control" name="password2" placeholder="Confirmar Contraseña">
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <label for="Email" class="col-md-3 control-label">Email</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="Email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tienda" class="col-md-3 control-label">Nombre de la tienda</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="tienda" placeholder="Nombre de la tienda">
+                        </div>
+                    </div>
+                        
 
-               
-               
-                
-         </div> 
+                    <div class="form-group">
+                        <!-- Button -->                                        
+                        <div class="col-md-offset-3 col-md-9">
+                            <input type="submit" class="btn btn-info" value="Registrar"/>
+                            <span style="margin-left:8px;">or</span>  
+                        </div>
+                    </div>
+                    
+                    <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
+                        
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-fbsignup" type="button" class="btn btn-primary" disabled><i class="icon-facebook"></i>   Sign Up with Facebook</button>
+                        </div>                                           
+                            
+                    </div>
+                    
+                    
+                    
+                </form>
+             </div>
+        </div>
+    </div> 
 {% endblock %}

@@ -237,3 +237,15 @@ body
     );
   background-size: 20px 40px;
 }
+
+.productbox
+{
+  border:solid black;
+  margin: 5px;
+}
+
+.footertienda
+{
+  background-color: darkgray;
+  padding: 100px 0 60px 0;
+}
