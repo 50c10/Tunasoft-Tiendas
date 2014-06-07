@@ -5,6 +5,7 @@ from tienda.apps.ventas.forms import addProductForm, addCategoriaForm
 from tienda.apps.ventas.models import producto , categoria
 from django.http import HttpResponseRedirect
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def add_producto_view(request):
 	if request.user.is_authenticated():
@@ -72,8 +73,21 @@ def ordenes_view(request):
 
 def productos_view(request):
 	tienda_actual = request.user.get_profile().tienda
-	prod = producto.objects.filter(status=True).filter(tienda=tienda_actual)
-	return render(request,'ventas/productos.html',{'productos':prod})
+	lista_productos = producto.objects.filter(status=True).filter(tienda=tienda_actual)
+	paginator = Paginator(lista_productos, 5)
+
+	pagina = request.GET.get('pagina')
+	buscar = request.GET.get("buscar", "")
+	try:
+		prod = paginator.page(pagina)
+	except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		prod = paginator.page(1)
+	except EmptyPage:
+		# If page is out of range (e.g. 9999), deliver last page of results.
+		prod = paginator.page(paginator.num_pages)
+
+	return render(request,'ventas/productos.html',{'productos':prod, 'buscar':buscar})
 
 def categorias_view(request):
 	tienda_actual = request.user.get_profile().tienda

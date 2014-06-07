@@ -56,3 +56,5 @@ class producto(models.Model):
 
 	def __unicode__(self):
 		return self.nombre
+
+
