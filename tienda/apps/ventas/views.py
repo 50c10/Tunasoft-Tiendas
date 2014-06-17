@@ -1,8 +1,8 @@
 # Create your views here.
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from tienda.apps.ventas.forms import addProductForm, addCategoriaForm
-from tienda.apps.ventas.models import producto , categoria
+from tienda.apps.ventas.forms import addProductForm, addCategoriaForm, subirImagenForm
+from tienda.apps.ventas.models import producto , categoria, imagen
 from django.http import HttpResponseRedirect
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -106,3 +106,4 @@ def confEnvios_view(request):
 def producto_view(request,id_producto):
 	prod = producto.objects.get(id=id_producto)
 	return render(request,'ventas/producto.html',{'producto':prod})
+

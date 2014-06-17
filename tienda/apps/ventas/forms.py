@@ -1,5 +1,5 @@
 from django import forms
-from tienda.apps.ventas.models import producto, categoria
+from tienda.apps.ventas.models import producto, categoria, imagen
 
 class addProductForm(forms.ModelForm):
     class Meta:
@@ -10,4 +10,3 @@ class addCategoriaForm(forms.ModelForm):
     class Meta:
         model = categoria
         exclude = {'tienda',}
-    

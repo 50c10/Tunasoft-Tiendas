@@ -3,6 +3,8 @@ from tienda.apps.subdomains.models import Subdomain
 from PIL import Image
 from cStringIO import StringIO
 from django.core.files.uploadedfile import SimpleUploadedFile
+from sorl.thumbnail import ImageField
+
 
 # Create your models here.
 
@@ -42,7 +44,7 @@ class categoria(models.Model):
 		return self.nombre
 
 class imagen(models.Model):
-    image = models.ImageField(upload_to ="photos/originals/%Y/%m/")
+    image = ImageField(upload_to ="photos/originals/%Y/%m/")
    
 class producto(models.Model):
 	nombre = models.CharField(max_length=100)
@@ -51,8 +53,10 @@ class producto(models.Model):
 	descripcion = models.TextField(max_length=300)
 	status = models.BooleanField(default=True)
 	tienda = models.ForeignKey(tienda)
-	imagenes = models.ManyToManyField(imagen)
+	#imagenes = models.ManyToManyField(imagen)
+	imagen = ImageField(upload_to ="photos/originals/%Y/%m/")
 	categoria = models.ManyToManyField(categoria,null=True,blank=True)
+	
 
 	def __unicode__(self):
 		return self.nombre

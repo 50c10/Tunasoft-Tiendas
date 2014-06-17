@@ -9,16 +9,23 @@
   }
  </STYLE>
 {% endblock %}
+
+{% load thumbnail %}
+
 {% block content %}
 
   <div class="container">
 			{% if productos %}
 				{% for p in productos %}
         <div class="col-md-3 column productbox">
-          <a  href="/producto/{{p.id}}/"><img src="http://placehold.it/460x250/e67e22/ffffff&text=HTML5" class="img-responsive">
+
+          <a  href="/producto/{{p.id}}/">
+          {% thumbnail p.imagen "460x250" crop="center" as im %}
+            <img src="{{ im.url }}" class="img-responsive">
+          {% endthumbnail %}
           <div class="producttitle">{{p.nombre}}</div>
           </a>
-          <div class="productprice"><div class="pull-right"><a href="#" class="btn btn-danger btn-sm" role="button">BUY</a></div><div class="pricetext">£8.95</div></div>
+          <div class="productprice"><div class="pull-right"><a href="#" class="btn btn-danger btn-sm" role="button">Comprar</a></div><div class="pricetext">{{p.precio}}</div></div>
         </div>
 				{% endfor %}
 			{% else %}
