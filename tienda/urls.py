@@ -15,8 +15,10 @@ urlpatterns = patterns('',
     url(r'^',include('tienda.apps.home.urls')),
     url(r'^',include('tienda.apps.ventas.urls')),
     url(r'^', include('tienda.apps.subdomains.urls')),
+    url(r'^', include('tienda.apps.fileupload.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT}),  
+ 
 )

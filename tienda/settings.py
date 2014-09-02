@@ -37,7 +37,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.normpath(os.path.join(PROJECT_DIR,'estatico/'))
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -125,6 +125,11 @@ INSTALLED_APPS = (
     'tienda.apps.subdomains',
     
     'sorl.thumbnail',
+    'crispy_forms',
+    'tienda.apps.fileupload',
+
+    'south',
+    'carton',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -163,3 +168,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'tunasoft@gmail.com'
 EMAIL_HOST_PASSWORD = 'unpassword'
 EMAIL_USE_TLS = True
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
+CART_PRODUCT_MODEL = 'tienda.apps.ventas.models.producto'

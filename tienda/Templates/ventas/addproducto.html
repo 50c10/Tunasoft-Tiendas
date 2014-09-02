@@ -1,9 +1,9 @@
 {% extends 'ventas/dashboard.html' %}
 {% block title %} Agregar Productos {% endblock %}
-
+{% load crispy_forms_tags %}
+{% load upload_tags%}
 
 {% block content %}
-	<h1>Agregar producto</h1>
 
 {% if alert == "suc" %}
 <div class="alert alert-success">
@@ -18,12 +18,5 @@
   <strong>Algo Anda mal!</strong> {{ informacion }}
 </div>
 {% endif %}
-
-	<form action="." method="POST">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="guardar"/>
-		<input type="reset" value="Limpiar"/>	
-	</form>
-
+	{% crispy form %}
 {% endblock %}

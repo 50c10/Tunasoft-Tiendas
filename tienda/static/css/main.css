@@ -244,3 +244,151 @@ body
   background-color: darkgray;
   padding: 100px 0 60px 0;
 }
+
+
+
+.nav-tabs {
+  margin-bottom: 20px;
+}
+.product-tab {
+  width: 100%;
+  display: inline-block;
+  clear: both;
+}
+.nav-tabs li a {
+  font-family: 'Dosis', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin: 0 0 0 0;
+  text-transform: uppercase;
+}
+.color-details {
+  margin-top: 14px;
+}
+.swatches {
+  margin: 0.5em 0;
+  padding-left: 0;
+}
+.swatches li {
+  border: 2px solid #FFFFFF;
+  display: inline-block;
+  margin: 2px 1px;
+  vertical-align: top;
+  list-style: none;
+}
+.swatches .selected, .swatches li:hover {
+  border: 2px solid #B2B2B2;
+}
+.swatches a {
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 2px solid #FFFFFF;
+  box-shadow: 1px 1px 2px #C5C5C5;
+  display: block;
+  height: 33px;
+  text-align: center;
+  transition: all 0.25s ease 0s;
+  width: 33px;
+}
+.swatches a img {
+  height: 29px;
+  width: 29px;
+}
+/* ------- filterBox -------*/
+
+.filterBox {
+  display: inline-block;
+  margin-right: 20px;
+}
+.cart-actions {
+  margin-top: 0;
+  margin-bottom: 20px;
+  width: 100%;
+  display: inline-block;
+  border-bottom: 1px solid #DDDDDD;
+  padding-bottom: 12px;
+  clear: both;
+}
+.cart-actions button, .cart-actions .wishlist {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  color: #FFFFFF;
+  display: block;
+  float: left;
+  font-family: Dosis, Helvetica Neue, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1em;
+  margin: 0 20px 0 0;
+  padding: 14px 20px;
+  text-transform: uppercase;
+  transition: all 0.25s ease 0s;
+  -moz-transition: all 0.25s ease 0s;
+  -webkit-transition: all 0.25s ease 0s;
+  -o-transition: all 0.25s ease 0s;
+  -ms-transition: all 0.25s ease 0s;
+}
+button.first {
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.cart-actions .wishlist {
+  background: #CCCCCC;
+  line-height: 1em;
+  text-decoration: none;
+  border: solid 2px #CCCCCC;
+}
+.cart-actions .wishlist:hover {
+  background: #fff;
+  color: #666;
+  border: solid 2px #CCCCCC;
+}
+.incaps {
+  display: block;
+  float: left;
+  font-family: 'Dosis', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin: 15px 20px 0 0;
+  text-transform: uppercase;
+}
+.incaps i {
+  font-size: 20px;
+}
+.color-in {
+  color: #4CC94A;
+}
+.color-out {
+  color: red;
+}
+.product-share {
+  border-top: 1px solid #DDDDDD;
+  clear: both;
+  display: inline-block;
+  margin-top: 20px;
+  padding-top: 14px;
+  width: 100%;
+}
+.socialIcon a {
+  background: #CCCCCC;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 22px;
+  padding: 6px 3px;
+  margin-right: 10px;
+  text-align: center;
+  width: 35px;
+  transition: all 0.15s ease-in-out 0s;
+  -moz-transition: all 0.15s ease-in-out 0s;
+  -webkit-transition: all 0.15s ease-in-out 0s;
+  -o-transition: all 0.15s ease-in-out 0s;
+  -ms-transition: all 0.15s ease-in-out 0s;
+}
+.socialIcon a:hover {
+  color: #fff;
+}

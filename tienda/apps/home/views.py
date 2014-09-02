@@ -64,6 +64,8 @@ def registro_view(request):
 		form = RegistroForm()
 	ctx = {'form':form,'reguistro_correcto':reguistro_correcto}
 	if reguistro_correcto :
+		usuarioRegistrado = authenticate(username=usuario,password=password)
+		login(request, usuarioRegistrado)
 		return HttpResponseRedirect('/dashboard/')
 	else :
 		return render_to_response('home/registro.html',ctx,context_instance=RequestContext(request))

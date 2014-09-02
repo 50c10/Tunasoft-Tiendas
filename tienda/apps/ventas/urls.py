@@ -11,5 +11,7 @@ urlpatterns = patterns('tienda.apps.ventas.views',
 	url(r'^configuracion/$','configuracion_tienda_view',name='vista_configuracion_tienda'),
 	url(r'^herramienta/$','herramienta_view',name='vista_herramienta'),
 	url(r'^conf-envios/$','confEnvios_view',name='vista_conf-envios'),
-
+	url(r'^show/$','show',name='show'),
+	url(r'^add/$', 'add', name='add'),
+	url(r'^addCart/$', 'addCart', name='addCart'),
 )

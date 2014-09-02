@@ -1,11 +1,15 @@
 # Create your views here.
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from tienda.apps.ventas.forms import addProductForm, addCategoriaForm, subirImagenForm
-from tienda.apps.ventas.models import producto , categoria, imagen
+from tienda.apps.ventas.forms import addProductForm, addCategoriaForm, addCartForm
+from tienda.apps.ventas.models import producto , categoria
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
+from carton.cart import Cart
 
 def add_producto_view(request):
 	if request.user.is_authenticated():
@@ -107,3 +111,26 @@ def producto_view(request,id_producto):
 	prod = producto.objects.get(id=id_producto)
 	return render(request,'ventas/producto.html',{'producto':prod})
 
+
+
+def add(request):
+	cart = Cart(request.session)
+	product = producto.objects.get(id=request.GET.get('product_id'))
+	cart.add(product, price=product.precio)
+	return HttpResponse("Added")
+
+def show(request):
+	return render(request, 'ventas/show-cart.html')
+
+def addCart(request):
+	if request.method == "POST":
+		formulario = addCartForm(request.POST)
+		if formulario.is_valid():
+			id_producto = formulario.cleaned_data['idproducto']
+			cart = Cart(request.session)
+			product = producto.objects.get(id=request.GET.get('product_id'))
+			cart.add(product, price=product.precio)
+			return HttpResponseRedirect()
+	else:
+		formulario = addCartForm()
+	return HttpResponse("Added")
